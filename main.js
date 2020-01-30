@@ -26,9 +26,13 @@ const launchForm = () => {
     document.getElementById('add-student').addEventListener('click', createStudent);
 };
 
+const randomArrElement = (arr) => {
+    return Math.floor(Math.random()*arr.length);
+};
+
 const createStudent = () => {
-    console.log(document.getElementById("inputName").value);
-    // next time, assign this ^ to a variable, then push it to the student array with a key of name
+    const formInput = document.getElementById("inputName").value;
+    const newStudent = students.push({name: formInput, house: house[randomArrElement(house)]});
 };
 
 
