@@ -1,4 +1,5 @@
-console.log('hi');
+const house = ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'];
+const students = [];
 
 
 const printToDom = (divId, textToPrint) => {
@@ -18,15 +19,22 @@ const launchForm = () => {
     domString += '           <label for="inputName" class="sr-only">Name</label>';
     domString += '           <input type="text" class="form-control" id="inputName" placeholder="Neville Longbottom">';
     domString += '       </div>';
-    domString += '       <button type="submit" class="btn btn-primary mb-2">Sort!</button>';
+    domString += '       <button id="add-student" type="submit" class="btn btn-primary mb-2">Sort!</button>';
     domString += '   </form>';
     domString += '</div>';
     printToDom('sorting-form', domString);
+    document.getElementById('add-student').addEventListener('click', createStudent);
+};
+
+const createStudent = () => {
+    console.log(document.getElementById("inputName").value);
+    // next time, assign this ^ to a variable, then push it to the student array with a key of name
 };
 
 
 const events = () => {
     document.getElementById('start-sorting').addEventListener('click', launchForm);
+    
 };
 
 const init = () => {
