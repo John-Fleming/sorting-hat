@@ -33,8 +33,23 @@ const randomArrElement = (arr) => {
 const createStudent = () => {
     const formInput = document.getElementById("inputName").value;
     const newStudent = students.push({name: formInput, house: house[randomArrElement(house)]});
+    createStudentCard(students);
+    document.getElementById("inputName").value = '';
 };
 
+const createStudentCard = (arr) => {
+    let domString = '';
+    for (let i = 0; i < arr.length; i++) {
+        domString += '<div class="card m-2">';
+        domString +=    '<div class="card-body text-center">';
+        domString +=        `<h2 class="student-name">${arr[i].name}</h2>`;
+        domString +=        `<p class="house-assignment">${arr[i].house}</p>`;
+        domString +=        '<button type="button" class="btn btn-primary">Expel</button>';
+        domString +=    '</div>';
+        domString += '</div>';
+    };
+    printToDom('student-cards-container', domString);
+};
 
 const events = () => {
     document.getElementById('start-sorting').addEventListener('click', launchForm);
