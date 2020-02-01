@@ -27,13 +27,13 @@ const launchForm = () => {
     document.getElementById('add-student').addEventListener('click', createStudent);
 };
 
-// counter function for assigning student ID
+// counter function for assigning student ID - also converts number to string
 const idCounter = () => {
     let output = students.length + 1;
     return output.toString();
 };
 
-// randomizer function
+// randomizer function calling a random house
 const randomArrElement = (arr) => {
     return Math.floor(Math.random()*arr.length);
 };
@@ -42,7 +42,7 @@ const randomArrElement = (arr) => {
 const createStudent = (e) => {
     e.preventDefault(); // keeps page from refreshing when submitting form
     const formInput = document.getElementById("inputName").value;
-    const newStudent = students.push({id: idCounter(), name: formInput, house: house[randomArrElement(house)]});
+    students.push({id: idCounter(), name: formInput, house: house[randomArrElement(house)]});
     createStudentCard(students);
     document.getElementById("inputName").value = '';
 };
@@ -66,11 +66,11 @@ const createStudentCard = (arr) => {
 // function that loops through all objects and adds click event to expel button on each object card
 const addExpelClickEvent = (arr) => {
     for (let i = 0; i < arr.length; i++) {
-        let expelBtn = document.getElementById(arr[i].id);
-        expelBtn.addEventListener('click', expel);
+        document.getElementById(arr[i].id).addEventListener('click', expel);
     }
 };
 
+// expel click event function
 const expel = (e) => {
     for (let i = 0; i < students.length; i++) {
         if (e.target.id === students[i].id) {
