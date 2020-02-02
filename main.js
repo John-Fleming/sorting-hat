@@ -10,17 +10,17 @@ const printToDom = (divId, textToPrint) => {
 // Add form to DOM
 const launchForm = () => {
     let domString = '';
-    domString += '<div class="form-container col-md-5 border border-dark rounded p-3">';
+    domString += '<div class="form-container col-lg-8 col-md-10 ml-auto mr-auto bg-white border border-dark rounded p-3">';
     domString += '   <div class="form-header mb-2">';
     domString += '       <h2 class="form-instructions">Enter First Year\'s Name</h2>';
     domString += '   </div>';
     domString += '   <form class="form-inline d-flex justify-content-end">';
     domString += '       <div class="form-group d-flex mx-sm-3 mb-2">';
-    domString += '           <p class="pr-5">Student:</p>';
+    domString += '           <span class="align-middle pr-5">Student:</span>';
     domString += '           <label for="inputName" class="sr-only">Name</label>';
-    domString += '           <input type="text" class="form-control" id="inputName" placeholder="Neville Longbottom">';
+    domString += '           <input type="text" class="form-control border border-dark mr-5" id="inputName" placeholder="Neville Longbottom">';
     domString += '       </div>';
-    domString += '       <button id="add-student" class="btn btn-primary mb-2">Sort!</button>';
+    domString += '       <button id="add-student" class="btn btn-light border border-dark rounded mb-2">Sort!</button>';
     domString += '   </form>';
     domString += '</div>';
     printToDom('sorting-form', domString);
@@ -51,11 +51,11 @@ const createStudent = (e) => {
 const createStudentCard = (arr) => {
     let domString = '';
     for (let i = 0; i < arr.length; i++) {
-        domString += '<div class="card m-2">';
+        domString += '<div class="card d-block col-lg-3 col-md-3 col-sm-12 m-2">';
         domString +=    '<div class="card-body text-center">';
         domString +=        `<h2 class="student-name">${arr[i].name}</h2>`;
         domString +=        `<p class="house-assignment">${arr[i].house}</p>`;
-        domString +=        `<button id="${arr[i].id}" type="button" class="expel-button btn btn-primary">Expel</button>`;
+        domString +=        `<button id="${arr[i].id}" type="button" class="expel-button btn btn-light border border-dark rounded">Expel</button>`;
         domString +=    '</div>';
         domString += '</div>';
     };
